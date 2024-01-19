@@ -1,0 +1,13 @@
+Inheritance and polymorphism:
+Inheritance is the concept of cpp where 1 class acquires members of another class and the other class will also have something unique which is not there in 1st class. The class whose members are acquired is called superclass or base class or parent class. The class which acquires members of the 1st class is subclass or child class or derived class.
+
+
+1.single inheritance:
+
+A
+
+
+B
+
+B is subclass of A
+

@@ -1,0 +1,81 @@
+Static members of class:
+class A
+{
+	int m;
+	static int n;
+
+};
+int A::n;
+
+Here m is a non static data member of class A and n is a static data member of class A. So for every new object cretated in RAM memory there will be a separate unique copy created for the non static data member m for the new object created of class A. But even if we create n objects of class A, there will still be only 1 copy created of the static data member n of class A, which is shared between all objects of class A. 
+
+Also for static data member of the class there is a rule that we need to redeclare the static data member of the class outside the class definition using :: scope resolution operator on the class name. 
+So here we have redeclared n static data member of class A outside the class A definition using the scope resolution operator on class A. This statement is called as definition statement of the static data member of the class where we redeclare it outside the class definition. The actual allocation of RAM memory to the static data member of the class is done in the statement where it is redeclared outside class definition. So actual allocation of RAM memory to the static data member n is done in the statement int A::n. Also here because we have not mentioned any initial value explicitly in the statement int A::n, so automatically compiler assigns default value of int type i.e. 0 as initial value for the static data member n. We can change value of static data member n after that. But if we had written int A::n=10, here the initial value assigned by cpp compiler to the static data member n is 10 because we have mentioned initial value for the static data member n as 10 here. 
+
+
+A a1,a2,a3,a4,a5;
+
+RAM memory:
+a1	a2	a3	a4	a5
+m	m	m	m	m
+
+		n
+
+
+
+
+class A
+{
+	int m;
+	static int n;
+
+	public:
+	void display1();
+	static void display2();
+
+};
+int A::n;
+
+void A::display1()
+{
+	m=20;
+	n=100;
+	cout<<"\n The value of m is "<<m<<" and n is "<<n;
+
+}
+RULE:
+Inside the body of a non static member function of a class we can directly access the static as well as non static members of same class. So display1() being a non static member function of class A, we could directly access both static data member n as well as non static data member m of class A inside body of display1() member function definition.
+
+void A::display2()
+{
+	//m=20;
+	A obj1;
+	obj1.m=20;
+
+	cout<<obj1.m;
+
+	n=100;
+	cout<<"\n The value of n is "<<n;
+
+}
+RULE:
+Inside the body of a static member function of a class we can directly access only the static but not the non static members of same class. So display2() being a static member function of class A, we could directly access only static data member n of class A inside body of static member function display2(). But if we want to access non static member m of class A inside body of display2() static member function then we need to use dot operator on an object or reference variable or use -> on pointer variable of the class A. So we have accessed non static data member m of class A using dot operator on obj1 object of class A inside body of the static member function display2() of class A,
+
+int main()
+{
+	A a1,a2,a3;
+
+	a1.display1();
+	a2.display1();
+	a3.display1();
+
+	A::display2();
+	a1.display2();
+	a2.display2();
+	a3.display2();
+If we want to indirectly access the static member function of the class we could use the :: also directly on the class name A, or we could use the dot operator on any object of class A like how we access the non static members of the class indirectly. So display2() being a static member function of class A, we have accessed it using :: on class A or by using dot operator on object of class A. But if we want to access non static member of class indirectly we must use the dot operator on object of the class. 
+
+	return 0;
+}
+
+The main use of the static data member of the class is to save RAM memory and to count how many objects of the class have been created till any particular time during pgm execution.

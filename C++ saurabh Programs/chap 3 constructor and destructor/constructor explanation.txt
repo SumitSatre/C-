@@ -1,0 +1,356 @@
+Constructor:
+Constructor is a special member function of the class with same name as class name and no return type. It may or maynot have parameters. It is always called when a new object of the class is getting created. The main use of a constructor is to initialise the data members of the object when the object is getting created. This also helps to save the no. of statements in pgm and also reduces execution time.
+
+RULE:
+When we dont define any constructor for the class explicitly then the cpp compiler will automatically create a constructor for the class at runtime time called as default constructor. Every default constructor is always non parameterised.
+class A
+{
+	int m;
+	
+	public:
+	void acc();
+	void display();
+
+};
+....
+....
+Here for the above class A definition cpp compiler has automatically created a constructor for the class A which will be a non parameterised constructor at runtime, and it is called default constructor. 
+
+When we dont define a constructor for the class explicitly only then cpp compiler creates a default constructor. But suppose we have already explicitly defined a constructor for the class definition then compiler doesnt automatically create a default constructor for the class. 
+
+A a1;
+
+class A
+{
+	int m;
+	
+	public:
+	A();
+	void display();
+
+};
+
+A::A()
+{
+	cout<<"\n Enter m:";
+	cin>>m;
+
+}
+
+void A::display()
+{
+	cout<<m;
+
+}
+
+
+
+
+int main()
+{
+	A a1;
+	
+	a1.display();
+	return 0;
+}
+
+In above class A definition, we have alrady explicitly defined a constructor for class A which is a non parameterised constructor. But this is not a default constructor because compiler has not automatically created it but this is an explicitly defined non parameterised constructor. So here compiler will not create a default constructor for class A because we have already explicitly defined one for class A. 
+
+So when the statement A a1 executes where we have declared a object of class A, THE COMpiler will automatically call the non parameterised non default constructor of class A and in the body of the non parameterised constructor of class A we have accepted an input value from user into data member m of a1 object of class. So till a1 object has got created the input value is accepted from user into data member m of class A. 
+
+So a1.display() will display value of data mmeber m which was accepted from user into m data member of a1 object in body of non parameterised explicit constructor of class A.
+
+So every default constructor is always non parameterised. But every non parameterised constructor may or maynot be default. 
+
+class A
+{
+	int m;
+	
+	public:
+	A();
+	void display();
+
+};
+
+A::A()
+{
+	cout<<"\n Enter m:";
+	cin>>m;
+
+}
+
+void A::display()
+{
+	cout<<m;
+
+}
+
+
+
+
+int main()
+{
+	A a1;
+	
+	a1.display();
+
+	A a2(9);
+Here we get a compiler error because we have tried to pass an integer value when creating a2 object but there is no parameterised constructor defined for class A having int parameter.
+	return 0;
+}
+
+
+
+
+
+class A
+{
+	int m;
+	
+	public:
+	A();
+	A(int);
+	void display();
+
+};
+
+A::A()
+{
+	cout<<"\n Enter m:";
+	cin>>m;
+
+}
+
+A::A(int m)
+{
+	this->m=m;
+
+}
+
+void A::display()
+{
+	cout<<m;
+
+}
+
+
+
+
+int main()
+{
+	A a1;
+	
+	a1.display();
+
+	A a2(9);
+Here now we dont get any error because here for the above statement compiler calls the parameterised constructor defined explicitly for class A having 1 int parameter and so for a2 object the parameterisedconstructor for class A having 1 int parameter is called and value of formal parameter of that parameterised constructor will be assigned to data member m of a2 object using 'this' keyword., This concept of defining multiple constructors for same class definition with same name but different parameter lists is called as constructor overloading.
+
+	A a3(9,10);
+Again we get compiler error for the above statement because we have passed 2 input values while declaring a3 object and there is no constructor in class A with 2 formal parameters.,
+	return 0;
+}
+
+
+
+3rd type of constructor: Copy constructor
+It is a special type of parameterised constructor whose parameter is a reference variable of same class type. This is mainly used when we want to initialise 1 object using another object or we want to change data member values of 1 object and store new values at same time into another object.
+class A
+{
+	int m;
+	
+	public:
+	A();
+	A(int);//normal parameterised constructor
+
+	A(A &);//copy constructor
+	void display();
+
+};
+
+A::A()
+{
+	cout<<"\n Enter m:";
+	cin>>m;
+
+}
+
+A::A(int m)
+{
+	this->m=m;
+
+}
+
+A::A(A &a4)
+{
+	m=a4.m;
+Here m means data member m of a3 objevt for whom copy constructor was called. a4.m means a1.m which was passed by referebce into copy constructor called of class  for a3 object. So after statement A a3(a1) runs the value of data member m of a3 is same as value of data member of a1.
+
+}
+
+void A::display()
+{
+	cout<<m;
+
+}
+
+
+
+
+int main()
+{
+	A a1;
+	
+	a1.display();
+
+	A a2(9);
+
+	A a3(a1);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+class A
+{
+	int m;
+	
+	public:
+	A(int);//normal parameterised constructor
+	void display();
+
+};
+
+
+A::A(int m)
+{
+	this->m=m;
+
+}
+
+
+
+void A::display()
+{
+	cout<<m;
+
+}
+
+
+
+
+int main()
+{
+	A a1(9);
+The above statement will call constructor of class A having int parameter and value 9 is stored into data member m of a1 object of class A.
+	
+	A a2;
+In above statement we have declared an a2 object. But we are trying to call non parameterised constructor of class A for a2 object. But there is no non parameterised constructor explicitly defined for class A and nor will cpp compiler automatically create a default constructor for class A because we have already defined a constructor for class A, so when we define a constructor for class A compiler doesnt automatically create a default constructor for class. So there is no non parameterised constructor available for class A. So we get compiler error for above statement.
+
+}
+
+
+
+
+4. dyanamic constructor
+Dyanamic constructor can be either a parameterised or non parameterised constructor. Inside the body of a dyanamic constructor we dyanamically allocate RAM memory to one or more data members of the class using new keyword.
+
+class A
+{
+	int *a;
+	int n;
+
+	public:
+	A();
+	A(int);
+	void display();
+
+};
+
+A::A()
+{
+	cout<<"\n Enter how many int values to store:";
+	cin>n;
+
+	a=new int[n];
+
+	cout<<"\n Enter the "<n<<" number of int values in the object:";
+	int i;
+
+	for(i=0;i<=n-1;i++)
+	{
+		cin>>a[i];
+
+	}
+
+}
+Inside body of the non parameterised cosntructor of class A, we have dyanamically allocated RAM memory to the data member a of class A using new keyword. So the above constructor of class A is a non parameterised and dyanamic constructor.
+ 
+
+
+
+A::A(int n1)
+{
+	n=n1;
+
+	a=new int[n];
+
+	cout<<"\n Enter the "<n<<" number of int values in the object:";
+	int i;
+
+	for(i=0;i<=n-1;i++)
+	{
+		cin>>a[i];
+
+	}
+
+}
+
+Inside body of the parameterised constructor of class A, we have dyanamically allocated RAM memory to the data member a of class A using new keyword. So the above constructor of class A is a parameterised and dyanamic constructor.
+ 
+
+void A::display()
+{
+	cout<<"\nThe "<n<<" number of int values in the object are:";
+	int i;
+
+	for(i=0;i<=n-1;i++)
+	{
+		cout<<a[i]<<" ";
+
+	}
+
+	delete a;
+
+}
+After we call display() member function of class A on a1 and a2 objects, then we no longer need the data member a which was dyanamically allocated for a1 and a2 objects So we deallocate or destroy RAM memory which was allocated to a1 and a2 objects using delete statement inside body of display() member function.
+
+int main()
+{
+	A a1;
+Calls non parameterised and dyanamic constructor for a1 object of class A
+
+	int n2;
+	
+	cout<<"\n Processing 2nd object:";
+	cout<<"\n Enter the number of int values for 2nd object:";
+	cin>>n2;
+
+	A a2(n2);
+Calls  parameterised and dyanamic constructor for a2 object of class A
+
+
+	a1.display();
+
+	a2.display();
+
+	return 0;
+}

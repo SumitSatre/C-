@@ -1,0 +1,56 @@
+Default values for formal parameters:
+In cpp, we ca assign default values for the formal parameters declared in the title of a function definition.  The advantage of this is that if we dont pass any input value or actual parameter for the corr. formal parameter, the cpp compiler will automatically consider the default value for that formal parameter. So using default values for formal parameyters we can either pass lesser number of input values compared to number of formal parameters or we can pass exactly those many input values equal to no. of formal parameters but we cannot pass more no. of input values in a function call statement than the number of formal parameters. 
+e.g.
+
+void display(int a=5,int b=10,int c=-21);
+Here we have assigned default values 5,10 and -21 to the formal parameters x,y z of the display() function definition. So though the names of the formal parameters in the title of the display() definition is not matching with the names of the variables mentioned in the display() function prototype declaration statement still we dont get any error. 
+
+int main()
+{
+	display();
+Here we have not passed any input values to the above display() function call statement. So for the above display() function call statement, the values considered for the variables x,y and z will be their default values i.e. for x it is 5, for y it is 10 and for z -21. So for the above display() call statement, the output is 5 10 -21
+
+	display(7);
+The input values are passed from left to right. So during execution of above display() call statement, 7 is passed into formal parameter x, and so the default value for x is overwritten by 7. But for y and z because we have not mentioned any input arguments so the values or y and z will be their default values 10 and -21 resp. So output of the above statement is 7 10 -21
+
+	display(7,8);
+Here x will be 7,y is 8 and z is -21
+
+	display(7,8,11);
+Here x is 7,y is 8 and z is 11
+
+	display(9,11,12,13);
+Here we get a compiler error because we have passed more number of actual parameters in comparisn to the number of formal parameters. 
+
+	return 0;
+}
+
+void display(int x,int y,int z)
+{
+	cout<<x<<" "<<y<<" "<z;
+
+}
+
+
+
+RULE:
+The default values are assigned to formal parameters from right to left.
+
+void display(int a=5,int b,int c);
+Compiler error
+
+void display(int a=5,int b=10,int c);
+compiler error
+
+void display(int a=5,int b,int c=21);
+compiler error
+
+void display(int a,int b,int c=11);
+no error
+
+void display(int a,int b=11,int c=29);
+no error
+
+
+
+

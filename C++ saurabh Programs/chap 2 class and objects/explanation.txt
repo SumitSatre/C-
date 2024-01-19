@@ -1,0 +1,111 @@
+class and objects:
+
+class is a user defined data type in Cpp.It is defined using class keyword in cpp. If we want to store data for multiple entities of the same data type, then we can define our own class and then create objects of the class. So class is a collection of variables and functions. The variables declared inside class definition are the data members of the class and the functions defined in the class definition are the member functions of the class. 
+Suppose we want to store details of many students. Then we can define our own class called Student and we can declare the attributes common to all students like student name,rollno,age,percentage etc. as the data members of class Student and we can define the functionalities like accStudentDetails(),displayStudentDetails(),calculateStudentAttendance() etc. which are common to all students as member functions of class Student.
+
+class Student
+{
+	char sname[100];
+	int srno;
+	float sper;
+	int sage;
+
+	void accStudentDetails()
+	{
+		this function will contain the statements to accept details of each student
+
+	}
+	
+	void displayStudentDetails()
+	{
+		this function will contain the statements to display details of each student
+
+	}
+
+	void calStudentPercentage()
+	{
+		this function will contain the statements to calculate percentage of each student
+
+	}
+
+}; 
+
+
+Object: It is physical instance of a class type. It is variable declared using a class type. So every object of class Student represents a single student and will store and process details of a single student. 
+
+Also for every new object created using a class type. there will be a separate unique copy created in RAM memory of the data members of the class for that new object created.
+So for n number of objects created of class type, there will be n copies created for each of the data members of class where each copy belongs to exactly one out of the n objects of class.
+
+e.g. Suppose we create 3 objects of class Student.
+
+Student s1,s2,s3;
+Here s1,s2 and s3 are 3 objects of class Student. So the arrangement of these objects and their corresponding data members in RAM memory will be as follows:
+RAM memory;
+s1	s2	s3
+sname	sname
+srno	.......
+sage
+sper
+
+
+Generally when we define a class we use concept of encapsulation. Encapsulation means the data and functions are combined into a single module called as class. Encapsulation also involes data hiding and abstraction. This means that the data of an object or data members of an object will not be directly accessible to the external functions which donot belong to the class tpe of that object and also if any external function wants tp access the data of an object then it will do so by calling member function on that object and not by directly accessing the data member of that object. If we want to implement encapsulation,data hiding and abstraction properly we declare the data membesr of class defined in the cpp pgm as private and member functions as public. Abstraction means that the internal implementation details of the functionalities of an object are hidden from the external user of that object. The user of the object will just call the functionality i.e. the member function of the object by passing appropriate number and data types and input values in the correct order and will get required output but how the output is obtained or how the data is being processed in that member function is hidden from the external user of that function.
+
+
+ So using encapsulation, we can redefine the class Student as:
+class Student
+{
+	private:
+	char sname[100];
+	int srno;
+	float sper;
+	int sage;
+
+	public:
+	void accStudentDetails();
+	void displayStudentDetails();
+	void calStudentPercentage();
+
+}; 
+
+The private and public and protected are access keywords in Cpp. The access keyword or access specifier or access modifiers are keywords in cpp which control access to the members of the class. The private members of the class can be accessed only inside the body of the member functions of the same class.We cannot access the private members of the class inside the body of those functions which are not member functions of the class. The public members of the class can be accessed either inside member functions of same class or inside the body of those external functions which are not member functions of the class.
+
+Suppose we dont use the private nor public nor protected keyword explicitly for the member of the class then the member of the class is automatically considered as private by compiler. So private is default access specifier in cpp. The general convention is that we will write prototype declaration statement for the member function of the class inside the class definition but we will write the actual definition of these member functions outside the class definition. So when we write the member function definitions of the member functions of the class outside the class definition then must use the :: scope resolution operator on class name in the title of the member function definition when it is outside the class. But if we write the definitions of member functions of the class isndie the class definition, we dont need to use the :: operator on the class name and nor do we need to write the function prototype declaration statements of the member functions. Also when member functions of the class are defined inside class definition, then they may be treated as inline functions by cpp compiler. 
+
+void Student::accStudentDetails()
+{
+		cout<<"\n Enter the student name:";
+		cin.ignore();
+		cin.getline(sname,99);
+//fflush(stdin)
+		cout<<"\n Enter student rollno:";
+		cin>>srno;
+
+		cout<<"\n Enter student percentage:";
+		cin>>sper;
+
+		cout<<"\n Enter student age:";
+		cin>>sage;
+}
+	
+void Student::displayStudentDetails()
+{
+		cout<<"\n The student name is "<<sname<<"\n The student rollno is "<<srno<<"\n The student percentage is "<<sper<<"\n The student age is "<<sage;
+}
+
+
+
+Rule:
+We can directly access the data members of a class inside body of the member functions of the same class. So we have directly accessed the data members sname,srno etc. inside body of accStudentDetails() and displsyStudentDetails() member functions resp.
+
+int main()
+{
+	Student s1;
+
+	s1.accStudentDetails();
+	s1.displayStudentDetails();
+The main() function cannot be defined as a member function of class definition in cpp pgm. main() must be defined as an independent function in the pgm.
+
+Though main() is not a member function of class Student still we can access the accStudentDetails() and displayStudentDetails() member functions of class Student inside body of main() because they are public member functions of class Student. But because main() is not a member function of class Student so we cannot directly access accStudentDetails() and displayStudentDetails() isnide body of main(), we will have to cretae an object of class Student i.e. s1 in above code and then use dot operator on that object to call public member functions of class Student inside body of main().
+
+	return 0;
+}

@@ -1,0 +1,15 @@
+Exception handling:
+Exception is a runtime error. It occurs during execution of a program. When an exception occurs and if exception is not handled properly it may terminate pgm execution. In exception handling, we dont prevent the exception from occurring. We allow the exception to occur but prevent the program execution from getting terminated after exception occurs.
+In exception handling, even after exception occurs we will catch the exception and store it into a variable of the program. So after the exception is stored inside a variable it will prevent the exception from propogating in the pgm and it will prevent execution of the function from getting terminated in whose body the exception occurred.
+
+We can generate an exception of any data type in the pgm.
+
+
+
+void display1()throws int,char
+{
+
+
+
+}
+The throws is a keyword in cpp and the above throws statement is limiting the type of exceptions which can be generated from the body of display1() to int and char exceptions. So if we write throw statements inside the display1() body which are generating exceptions of types other than int or char we get a compiler error.

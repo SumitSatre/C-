@@ -1,0 +1,29 @@
+int a=5,b=10,c;
+
+c=a+b;
+Here when we use an arithmatic operator between primitive variables of types int,float char etc. then we dont get any error because the compiler knows how to apply the corr. arithmatic operator between variables or values of primitive types.
+
+So here addition of values of a and b i.e. 15 is stored into c variable.
+
+
+class A
+{
+	int m;
+....
+....
+
+};
+
+A a1,a2,a3;
+
+a1.acc();
+a2.acc();
+
+a3=a1+a2;
+Here we have used + operator between objects a1 and a2 of class A. So cpp compiler gives a compiler error because compiler doesnt know how to apply arithmatic operators between objects of any class type directly. So in operator overloading we change meaning of the operator when it is applied between variables or objects of class type, in such a way that when the arithmatic operator is applied between variables or values of primitive types like int etc. it will perform corresponding arithmatic operation on them, but when the same aritgmatic operator is applied between objecst of a class type it will run a set of statements which we have written in the pgm. 
+
+So for implementing operator overloading we need to define a function with the keyword operator in the name of the function followed by symbol of the operator which is to be overloaded. This function with the name as operator <symbol of operator>() can be defined either as a member fucntion or friend function of the class type for whose objects we want to overload that operator.
+
+
+e.g. If we dont want a compiler error for the statements a3=a1+a2, we will define function named operator +() either as a member function or a friend function of class A which is class type of objects a1,a2,a3 resp. 
+

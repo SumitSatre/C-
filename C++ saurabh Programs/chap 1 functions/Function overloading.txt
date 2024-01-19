@@ -1,0 +1,38 @@
+Function overloading:
+When we have multiple functions defined in same cpp pgm, with same names but different parameter list, then it is called function overloading. The return types of the overloaded functions may or maynot be same. So if we are having multiple functions with same same different return types and same parameter lists in the same cpp pgm then we get compiler error.
+
+void display(int i)
+{
+
+
+}
+
+int display(int i,int j)
+{
+
+
+}
+
+
+
+void display(int i,int j,int k)
+{
+
+
+}
+
+The above 3 functions named display() with different parameter lists are overloaded functions.
+
+void abc(int i,int j)
+{
+
+
+}
+
+int abc(int m,int n)
+{
+
+
+}
+
+Here we get compiler error because we cannot multiple function definitions in same cpp pgm with same parameter lists even though their return types are different.

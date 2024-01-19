@@ -1,0 +1,29 @@
+Templates:
+class A
+{
+	int m;
+
+};
+A obj1,obj2,obj3;
+Here for each object created using class A, the data type of the data member , for that object will be of int type only. So for the obj1,obj2 and obj3 objects of class A, the data type of m data member for obj1,obj2 and obj3 is int.
+
+
+
+template<class T>
+class A
+{
+	T m;
+
+};
+
+
+A<int>a1;
+A<float>a2;
+A<char>a3;
+
+Here we have used a template class type. We have defined class A having generic type as T. We can use any alphabet name instead of T. T can be replaced by a proper data type when we are creating any object of generic class A.
+
+For a1 object every occurance of T type in class A definition is replaced by int, for a2 it is replaced by float and for a3 by char.
+
+So the data type of data member m of a1 is int, for a2 it is float and a3 is char.
+

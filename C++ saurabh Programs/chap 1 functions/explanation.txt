@@ -1,0 +1,111 @@
+class:
+
+class is a collection of variables and functions. When we want to define our own data type in Cpp, we define a class using class keyword. The variables declared inside class definition are the data members of the class and the functions defined inside the class definition are the member functions of the class.
+
+struct Student
+{
+	char sname[100];
+	int srno;
+	int sper;
+
+};
+
+struct Student s1;
+
+s1.sname,s1.srno,s1.sper
+
+int i,j,k;
+
+class Student
+{
+	char sname[100];
+	int srno;
+	int sper;
+
+	void accStudentDetails()
+	{
+		.....
+		.....
+
+	}
+
+	void displayStudentDetails()
+	{
+		...
+		...
+
+	}
+
+	void calculateAggregatePercentage()
+	{
+
+		...
+		...
+	}	
+
+
+}
+When we mention return type of a function definition as void it means that we are not allowed to return an output from the body of the function definition. So if we try to mention a return statement inside body of a function definition whose return type is void we get compiler error.
+
+In above code we have defined our own class named Student, where sname,srno and sper are the data members of class Student and accStudentDetails(),displayStudentDetails(),calculateAggregatePercentage() are the member functions of class Student.
+
+Object: It is physical instance of class Student. It is a variable declared using class type.
+
+Student s1,s2,s3,s4;
+Here s1...s4 are the 4 objects of class Student.
+
+For every new object created using a class type, there will be a separate unique copy created in RAM memory for the data members of the class. So every object will have its own unique copy of the data members of the class.
+
+So here because we created 4 objects of class Student, so there will be 4 copies cretaed in RAM memory for each of the data members sname,srno and sper where every copy belongs to exactly one out of 4 objects of class Student.
+
+RAM memory:
+s1	s2	s3	s4
+sname	sname
+srno	srno
+sper	sper.............
+
+If we want to access member functions of class Student we need to use dot operator on objet of class Student.
+s1.accStudentDetails() it will accept input values from user into data members of s1 object only.
+
+
+cout:
+There is a predefined class in iostream.h header called as ostream class. The ostream class represents standard output device or monitor of our system.  cout is a keyword in Cpp and it is object of ostream class. So cout is a predefined variable in cpp. If we want to display outout values on screen we use cout statement. Along with cout, we use << insertion operator. 
+
+e.g. If we have 3 variables in our Cpp pgm as:
+int a=5;
+float b=5.8;
+char ch='d';
+
+Now if we want to display the current values of all 3 variables then we can write cout statement as:
+cout<<"\n The values of a,b and ch are "<<a<<","<<b<<","<<ch;
+
+In a single cout statement we have mentioned multiple insertion operators. This is called cascading of insertion operators. Before every output value which is to be displayed on screen using cout statement, we have mentioned 1 << insertion operator. Also because we want to display values of variables a,b and ch on screen, so we have placed these variable names outside double quotes. But before every variable name we have mentioned 1 insertion operator.
+
+So output of the above cout statement is:
+
+ The values of a,b and ch are 5,5.8,d
+
+
+
+
+
+
+
+cin:
+istream is a predefined class in iostream.h header file. It represents standard input device or keyboard of the system on which our pgm is running.
+cin is the object of istream class. cin is a keyword or predefined variable in cpp just like cout.We use cin in Cpp just like we use scanf() in C language.
+
+But scanf() is a function and cin is an object.
+
+If we want to accept input values into variables of C pgm from keyboard we will write cin statement. We use extraction operator >>with cin statement.
+
+e.g.
+int a;
+float b;
+char ch;
+
+cin>>a>>b>>ch;
+Here in same cin statement, we have mentioned multiple extraction operators. This is called as cascading of extraction operators. In the above statement we have mentioned 1 >> operator before every variable name. So above cin statement is accepting input from user into the RAM memory locations of variables a,b and ch resp. 
+
+
+Unlike printf and scanf() we dont use format specifiers in cout and cin statement like %d,%f,%c resp.

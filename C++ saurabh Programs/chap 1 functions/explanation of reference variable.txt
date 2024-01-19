@@ -1,0 +1,33 @@
+Reference variable:
+
+int *p;
+int m;
+p=&m;
+Here p has been declared as a pointer variable of type int because when we have declared p we have used * symbol. So here we have assigned address of m as value of p. But there will be a different RAM memory area allocated for m variable and a separate RAM memory area allocated for p variable. But only advantage of using pointer variable, is that we can indirectly access RAM memory location of another variable using pointer variable and for implementing call by address.
+
+But because of pointers the RAM memory gets wasted and the complexity of pgm increases. So instead in cpp we can use reference variable.
+
+
+
+Reference variable
+int m;
+int &p=m;
+
+Here we have mentioned & symbol while declaring p variable. So here p is a reference variable and not a pointer variable. Also we have mentioned m on RHS while declaring reference variable p. So p has been declared as a reference variable to m. This means that p and m are aliases to each other. This also means that p and m are 2 different names for the same 2 byte RAM memory location which was initially allocated for m variable when the statement int m executed. So using reference variable helps save RAM memory. 
+Also once we declare a reference variable we dont need to again use the & symbol nor * symbol before name of the reference variable.
+
+p=100;
+Here automatically value reflected in m variable also is 100
+
+m=50;
+Here automatically value reflected in p variable also is 50
+
+
+int m;
+int c;
+int &p=m;
+p=m;
+Here we get compiler error because we have declared reference variable on 1 line and initialised it on next line. But as per rule of Cpp compiler we must declare a reference variable and assin it another variable name on same line. 
+
+
+Once we assign a reference variable a reference to another variable we cannot make it refer to another different variable dyanamically. So reference variable can be assigned its reference only statically at compile time unlike pointers. 
